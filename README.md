@@ -26,7 +26,6 @@ Then, you can use the package in Python as follows:
 ```python
 import os
 from calendly_fetcher.calendly_fetcher import get_calendly_availability
-from calendly_fetcher.calendly_fetcher import convert_basic_date_to_datetime
 
 # Set the API key (you can get it from https://calendly.com/integrations)
 api_key = os.environ.get("CALENDLY_API_KEY")
@@ -38,7 +37,7 @@ api_key = os.environ.get("CALENDLY_API_KEY")
 import os
 import pytz
 from datetime import datetime, timedelta
-from calendly_fetcher import get_calendly_availability
+from calendly_fetcher.calendly_fetcher import get_calendly_availability, convert_basic_date_to_datetime
 
 # Set the API key (you can get it from https://calendly.com/integrations)
 api_key = os.environ.get("CALENDLY_API_KEY")

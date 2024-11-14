@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='calendly-fetcher',
-    version='0.1.0',
+    version='0.1.2',
     author='Malek Ibrahim',
     author_email='shmeek8@gmail.com',
     description='A package to fetch availability data from Calendly',

@@ -43,6 +43,19 @@ def convert_basic_date_to_datetime(date):
     # example: start_date = datetime.strptime(start_date_simple, "%m-%d-%Y").replace(tzinfo=pytz.timezone('America/New_York'))
     return datetime.strptime(date, "%m-%d-%Y").replace(tzinfo=pytz.timezone('America/New_York'))
 
+def availability_to_list_of_strings(availability, timezone, duration=30):
+    availability_strings = []
+    for slot in availability:
+        if f'{duration}min' in slot['scheduling_url']:
+            slot['end_time'] = datetime.strptime(slot['start_time'], "%Y-%m-%dT%H:%M:%SZ") + timedelta(minutes=duration)
+            # convert the times from UTC to the specified timezone
+            utc_start_time = datetime.strptime(slot['start_time'], '%Y-%m-%dT%H:%M:%SZ').replace(tzinfo=pytz.utc)
+            local_start_time = utc_start_time.astimezone(pytz.timezone(timezone))
+            utc_end_time = slot['end_time'].replace(tzinfo=pytz.utc)
+            local_end_time = utc_end_time.astimezone(pytz.timezone(timezone))
+            availability_strings.append(f"Available: {local_start_time} - {local_end_time}")
+    return availability_strings
+
 # Usage
 # api_token = os.getenv("CALENDLY_API_TOKEN")
 
