@@ -1,1 +1,13 @@
 sandbox/
+
+pypi_api_token.txt
+
+dist/
+
+build/
+
+calendly_fetcher.egg-info/
+
+MANIFEST.in
+
+.vscode/
